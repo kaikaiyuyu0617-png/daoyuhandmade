@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>島宇手作 🐢 靈魂內耗與設計偏好調頻問卷</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sage: {
+                            50: '#F4F7F5',
+                            100: '#E6ECE9',
+                            200: '#CCDCD3',
+                            500: '#8FA89B',
+                            800: '#3D5246',
+                            900: '#2C3E35',
+                        },
+                        oatmeal: {
+                            50: '#FAF8F5',
+                            100: '#F4F1EA',
+                            200: '#E8E3D7',
+                            800: '#5C5446',
+                        },
+                        terracotta: {
+                            100: '#F7ECE9',
+                            500: '#D9A08F',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans TC', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #FAF8F5;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF8F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #CCDCD3;
+            border-radius: 3px;
+        }
+        /* Transition utility */
+        .fade-enter {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        .fade-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+    </style>
+</head>
+<body class="text-sage-900 min-h-screen flex flex-col justify-between">
+
+    <!-- Toast Notification (Custom alert) -->
+    <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 bg-sage-900 text-oatmeal-100 px-6 py-3 rounded-full shadow-lg z-50 transform -translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center space-x-2 text-sm md:text-base">
+        <span id="toast-icon">✨</span>
+        <span id="toast-text">已成功複製！</span>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header class="border-b border-sage-200 py-4 px-6 bg-oatmeal-50/80 backdrop-blur-md sticky top-0 z-40 transition-all duration-300">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <!-- Brand Icon -->
+                <span class="text-2xl">🐢</span>
+                <div>
+                    <h1 class="text-lg font-bold tracking-widest text-sage-900">島宇手作</h1>
+                    <p class="text-xs text-sage-500 font-light tracking-wider">Island Space</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2 text-sm text-sage-800">
+                <span class="w-2 h-2 rounded-full bg-sage-500 animate-pulse"></span>
+                <span>線上情緒寄託室</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-grow max-w-2xl w-full mx-auto px-4 py-8 md:py-12">
+        
+        <!-- Welcome Screen -->
+        <section id="section-welcome" class="bg-oatmeal-100 rounded-3xl p-6 md:p-10 border border-sage-200/50 shadow-sm relative overflow-hidden transition-all duration-500">
+            <!-- Decorative SVG circles -->
+            <div class="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-sage-200/20 pointer-events-none"></div>
+            <div class="absolute -bottom-16 -left-16 w-64 h-64 rounded-full bg-terracotta-100/30 pointer-events-none"></div>
+
+            <div class="relative z-10 text-center">
+                <div class="inline-flex items-center justify-center bg-sage-100 text-sage-900 p-4 rounded-full mb-6">
+                    <!-- Custom Waving Turtle Assistant "Man-Man" (慢慢) SVG -->
+                    <svg class="w-16 h-16 text-sage-800" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 85C69.33 85 85 69.33 85 50C85 30.67 69.33 15 50 15C30.67 15 15 30.67 15 50C15 69.33 30.67 85 50 85Z" fill="#CCDCD3" stroke="#8FA89B" stroke-width="2"/>
+                        <!-- Head -->
+                        <path d="M78 50C82.4183 50 86 46.4183 86 42C86 37.5817 82.4183 34 78 34C73.5817 34 70 37.5817 70 42C70 46.4183 73.5817 50 78 50Z" fill="#8FA89B"/>
+                        <!-- Turtle Shell details -->
+                        <path d="M35 50C35 41.7157 41.7157 35 50 35C58.2843 35 65 41.7157 65 50C65 58.2843 58.2843 65 50 65C41.7157 65 35 58.2843 35 50Z" fill="#3D5246"/>
+                        <path d="M42 50H58" stroke="#CCDCD3" stroke-width="2"/>
+                        <path d="M50 42V58" stroke="#CCDCD3" stroke-width="2"/>
+                        <!-- Waving Hand -->
+                        <path d="M72 32C74 28 78 24 81 25C84 26 84 31 81 35" stroke="#8FA89B" stroke-width="4" stroke-linecap="round"/>
+                        <!-- Tiny adorable face -->
+                        <circle cx="79" cy="40" r="2" fill="#FAF8F5"/>
+                    </svg>
+                </div>
+                
+                <p class="text-sage-500 text-sm tracking-wider uppercase mb-2">島宇手作 ✕ 小幫手慢慢</p>
+                <h2 class="text-2xl md:text-3xl font-medium tracking-widest text-sage-900 mb-4">測測你的日常內耗指數</h2>
+                <h3 class="text-lg text-sage-800 font-light mb-6">找回被世界沒收的慢活步調</h3>
+                
+                <div class="text-left bg-white/75 backdrop-blur-sm rounded-2xl p-6 mb-8 text-sage-800 space-y-4 text-sm md:text-base leading-relaxed border border-sage-100">
+                    <p class="font-medium text-sage-900">嗨，親愛的島民 🌿</p>
+                    <p>我是島主沐曦，也是這座島守護官慢慢小助理。歡迎來到這座承載你一切情緒的宇宙。</p>
+                    <p>在快節奏的日常裡，你有多久沒有好好坐下來，溫柔傾聽內心真正的頻率了？有時候，莫名其妙的焦慮、失眠或心累，只是因為你走得太快，需要給靈魂留一個安全的空間放空、寄放疲倦。</p>
+                    <p class="text-xs md:text-sm text-sage-500 italic">💡 本問卷共 15 題不記名，約花費 3 分鐘。填寫完成後，島宇的三隻神獸慢活導師將為你提供專屬調頻建議與客製化水晶方向，幫助你重拾靈魂主權。</p>
+                </div>
+
+                <button onclick="startQuestionnaire()" class="w-full md:w-auto px-10 py-4 bg-sage-900 hover:bg-sage-800 text-oatmeal-50 rounded-full font-medium tracking-widest transition-all duration-300 transform hover:-translate-y-1 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sage-900">
+                    啟動靈魂調頻測驗 🔮
+                </button>
+            </div>
+        </section>
+
+        <!-- Questionnaire Section -->
+        <section id="section-quiz" class="hidden bg-white rounded-3xl p-6 md:p-10 border border-sage-200/50 shadow-md transition-all duration-500">
+            <!-- Progress Bar -->
+            <div class="mb-8">
+                <div class="flex justify-between items-center text-xs text-sage-500 mb-2 font-light">
+                    <span id="quiz-progress-text">調頻進度：1 / 5</span>
+                    <span id="quiz-percentage-text">20%</span>
+                </div>
+                <div class="w-full bg-sage-100 h-2 rounded-full overflow-hidden">
+                    <div id="quiz-progress-bar" class="bg-sage-500 h-full w-0 transition-all duration-500 ease-out"></div>
+                </div>
+            </div>
+
+            <!-- Form Form -->
+            <form id="quiz-form" onsubmit="event.preventDefault();">
+                <!-- Step 1: 內心狀態覺察 -->
+                <div id="step-1" class="quiz-step space-y-6">
+                    <div class="border-b border-sage-100 pb-4">
+                        <span class="text-xs bg-sage-100 text-sage-800 px-3 py-1 rounded-full font-light">第一階段</span>
+                        <h4 class="text-xl font-medium mt-2 text-sage-900">內心狀態覺察 🧭</h4>
+                        <p class="text-xs text-sage-500 mt-1">讓我們慢慢靜下來，坦白地看看現在的自己。</p>
+                    </div>
+
+                    <!-- Q1 -->
+                    <div class="space-y-3">
+                        <label class="block text-sm md:text-base font-medium text-sage-900">Q1. 如果用 1～10 分來形容你現在的整體精神狀態，你會給幾分？</label>
+                        <p class="text-xs text-sage-500 italic">（1 分代表極度疲憊、很不好；10 分代表能量充沛、非常好）</p>
+                        <div class="pt-4 px-2">
+                            <input type="range" id="q1" name="q1" min="1" max="10" value="5" class="w-full h-2 bg-sage-100 rounded-lg appearance-none cursor-pointer accent-sage-800">
+                            <div class="flex justify-between text-xs text-sage-500 px-1 mt-2">
+                                <span>1 分 (精疲力竭)</span>
+                                <span class="text-sm font-bold text-sage-900" id="q1-val">當前：5 分</span>
+                                <span>10 分 (完美滿分)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="space-y-3">
+                        <label class="block text-sm md:text-base font-medium text-sage-900">Q2. 最近在「情緒與心境」上，你常常遇到哪些困擾？（可複選）</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <label class="flex items-start p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50">
+                                <input type="checkbox" name="q2" value="悶悶不樂" class="mt-1 h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800 leading-tight">悶悶不樂，難受悶在心裡，找不到人釋放</span>
+                            </label>
+                            <label class="flex items-start p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50">
+                                <input type="checkbox" name="q2" value="莫名焦慮" class="mt-1 h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800 leading-tight">容易莫名焦慮、恐慌，極度缺乏安全感</span>
+                            </label>
+                            <label class="flex items-start p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50">
+                                <input type="checkbox" name="q2" value="心情起伏大" class="mt-1 h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800 leading-tight">心情起伏大，容易生氣失控，易受外界影響</span>
+                            </label>
+                            <label class="flex items-start p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50">
+                                <input type="checkbox" name="q2" value="缺乏自信" class="mt-1 h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800 leading-tight">沒有自信，很在意別人的眼光與評價</span>
+                            </label>
+                            <label class="flex items-start p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50">
+                                <input type="checkbox" name="q2" value="感到孤單" class="mt-1 h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800 leading-tight">感到孤單不被理解，剛經歷情感波折（如分手）</span>
+                            </label>
+                            <label class="flex items-start p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50">
+                                <input type="checkbox" name="q2" value="悶著想法" class="mt-1 h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800 leading-tight">想說的話不敢說，習慣把真實想法悶著</span>
+                            </label>
+                            <label class="flex items-start p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50">
+                                <input type="checkbox" name="q2" value="腦袋停不下來" class="mt-1 h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800 leading-tight">腦袋停不下來、想太多，失眠且迷茫無靈感</span>
+                            </label>
+                            <label class="flex items-start p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50">
+                                <input type="checkbox" name="q2" value="迷失方向" class="mt-1 h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800 leading-tight">覺得生活迷失，找不到方向</span>
+                            </label>
+                            <label class="flex items-start p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50 col-span-1 md:col-span-2">
+                                <input type="checkbox" name="q2" value="無困擾" id="q2-none" class="mt-1 h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800 leading-tight">目前沒有特別的情緒困擾 ✨</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="space-y-3">
+                        <label class="block text-sm md:text-base font-medium text-sage-900">Q3. 你覺得最近讓你產生壓力或內耗的主要來源是什麼？（可複選）</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <label class="flex items-start p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50">
+                                <input type="checkbox" name="q3" value="工作學業" class="mt-1 h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800 leading-tight">工作或學業（壓力大、加班、卡關、人際關係）</span>
+                            </label>
+                            <label class="flex items-start p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50">
+                                <input type="checkbox" name="q3" value="感情婚姻" class="mt-1 h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800 leading-tight">感情或婚姻（爭吵、冷戰、溝通不良、不安全感）</span>
+                            </label>
+                            <label class="flex items-start p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50">
+                                <input type="checkbox" name="q3" value="家庭親人" class="mt-1 h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800 leading-tight">家庭或親人（期待、勒索、相處摩擦）</span>
+                            </label>
+                            <label class="flex items-start p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50">
+                                <input type="checkbox" name="q3" value="金錢經濟" class="mt-1 h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800 leading-tight">金錢或經濟（財務焦慮、未來開銷擔憂）</span>
+                            </label>
+                            <label class="flex items-start p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50 col-span-1 md:col-span-2">
+                                <input type="checkbox" name="q3" value="自我價值" class="mt-1 h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800 leading-tight">自我價值（對未來迷茫、容貌能力焦慮、不夠好）</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q4 -->
+                    <div class="space-y-3">
+                        <label class="block text-sm md:text-base font-medium text-sage-900">Q4. 整體而言，這些心理狀況對你目前生活的影響程度如何？</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q4" value="1" required class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">幾乎沒有什麼影響，心情大致算平靜。</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q4" value="2" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">有一點困擾，有時會在深夜突然沮喪、亂想。</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q4" value="3" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">已經影響到生活（如：工作常分神、明顯失眠）。</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q4" value="4" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">非常嚴重，已經不堪重負，想趕快調整改善。</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: 生活節奏與調節 -->
+                <div id="step-2" class="quiz-step hidden space-y-6">
+                    <div class="border-b border-sage-100 pb-4">
+                        <span class="text-xs bg-sage-100 text-sage-800 px-3 py-1 rounded-full font-light">第二階段</span>
+                        <h4 class="text-xl font-medium mt-2 text-sage-900">生活節奏與調節 🌿</h4>
+                        <p class="text-xs text-sage-500 mt-1">讓我們看看，你在生活重擔下如何安置自己。</p>
+                    </div>
+
+                    <!-- Q5 -->
+                    <div class="space-y-3">
+                        <label class="block text-sm md:text-base font-medium text-sage-900">Q5. 當你碰到上述的情緒或生活卡點時，你通常都怎麼處理？</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q5" value="獨自承受" required class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">悶在心裡默默承受，希望時間淡忘它。</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q5" value="找人傾訴" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">找親近的朋友、家人或伴侶傾訴。</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q5" value="轉移注意力" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">透過購物、美食、大吃一頓、追劇等方式轉移。</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q5" value="自行調整" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">透過靜坐、看書、聽音樂來自行調整頻率。</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q5" value="硬撐著" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">不知道怎麼處理，只能硬撐著、假裝沒事。</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q6 -->
+                    <div class="space-y-3">
+                        <label class="block text-sm md:text-base font-medium text-sage-900">Q6. 如果有適合你的調頻方式，你願意嘗試改善目前的狀態嗎？</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q6" value="先看看" required class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">先看看、持觀望態度。</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q6" value="有機會試試" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">有機會的話，願意無負擔試試看。</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q6" value="認真調整" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">願意認真投入、主動改善。</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q6" value="極渴望改善" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">非常急切，很想趕快突破現狀。</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q7 -->
+                    <div class="space-y-3">
+                        <label class="block text-sm md:text-base font-medium text-sage-900">Q7. 在目前的快節奏生活中，你平均一天有多少時間「完全放空、與自己獨處」？</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q7" value="完全沒有" required class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">完全沒有，一閉眼或停下來就充滿雜音、看手機。</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q7" value="10-30分鐘" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">只有 10-30 分鐘（通常是上下班通勤、洗澡或上廁所時）。</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q7" value="1小時以上" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">有 1 小時以上，我每天都有刻意留出安靜與自己相處的時光。</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: 能量與直覺感受 -->
+                <div id="step-3" class="quiz-step hidden space-y-6">
+                    <div class="border-b border-sage-100 pb-4">
+                        <span class="text-xs bg-sage-100 text-sage-800 px-3 py-1 rounded-full font-light">第三階段</span>
+                        <h4 class="text-xl font-medium mt-2 text-sage-900">能量與直覺感受 ✨</h4>
+                        <p class="text-xs text-sage-500 mt-1">讓我們探索你天生與大自然、氣場能量的細微連結。</p>
+                    </div>
+
+                    <!-- Q8 -->
+                    <div class="space-y-3">
+                        <label class="block text-sm md:text-base font-medium text-sage-900">Q8. 在做人處事或面臨抉擇時，你覺得你偏向哪一種性格？</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q8" value="理性思考型" required class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">理性思考型（講究邏輯、證據與實用性）</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q8" value="感受型" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">感受型（心思細膩、容易察覺氛圍、注重情感體驗）</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q8" value="行動派" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">行動派（有企圖心、一旦有想法就會想立即去執行）</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q8" value="猶豫不決型" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">容易猶豫（容易多疑、擔心太多而卡在原地）</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q9 -->
+                    <div class="space-y-3">
+                        <label class="block text-sm md:text-base font-medium text-sage-900">Q9. 你相信或曾對大自然水晶、能量磁場或直覺有過感應嗎？</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q9" value="很有感" required class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">很有感（能明顯感覺到水晶、空間或動物的能量）</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q9" value="有一點" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">有一點（有時候自覺、第六感很準，或常有些奇特巧合）</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q9" value="不確定" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">不確定（沒認真注意過，但抱著開放態度）</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q9" value="沒有感" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">完全沒有感覺，傾向用純科學或物質視角看待。</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q10 -->
+                    <div class="space-y-3">
+                        <label class="block text-sm md:text-base font-medium text-sage-900">Q10. 你最希望透過天然水晶或心靈諮詢，為生活帶來什麼樣的實質改變？（可複選）</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <label class="flex items-start p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50">
+                                <input type="checkbox" name="q10" value="平靜" class="mt-1 h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800 leading-tight">舒緩壓力與焦慮，重獲心靈的平靜 🌿</span>
+                            </label>
+                            <label class="flex items-start p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50">
+                                <input type="checkbox" name="q10" value="行動力" class="mt-1 h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800 leading-tight">提升行動力，打破拖拖拉拉，想做就去做</span>
+                            </label>
+                            <label class="flex items-start p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50">
+                                <input type="checkbox" name="q10" value="自信" class="mt-1 h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800 leading-tight">增加自信心，勇敢展現真實的自我 ☀️</span>
+                            </label>
+                            <label class="flex items-start p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50">
+                                <input type="checkbox" name="q10" value="感情" class="mt-1 h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800 leading-tight">改善人際關係、招好桃花或增進感情和諧</span>
+                            </label>
+                            <label class="flex items-start p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50">
+                                <input type="checkbox" name="q10" value="事業財運" class="mt-1 h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800 leading-tight">增強職場運勢、招財、帶來物質與精神豐盛</span>
+                            </label>
+                            <label class="flex items-start p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50">
+                                <input type="checkbox" name="q10" value="防小人" class="mt-1 h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800 leading-tight">辟邪擋煞、排除負能量、防身邊小人與干擾</span>
+                            </label>
+                            <label class="flex items-start p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50 col-span-1 md:col-span-2">
+                                <input type="checkbox" name="q10" value="慢活" class="mt-1 h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800 leading-tight">想讓自己徹底慢下來，重新找回內心平穩與靈魂主權</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: 美學與設計偏好 -->
+                <div id="step-4" class="quiz-step hidden space-y-6">
+                    <div class="border-b border-sage-100 pb-4">
+                        <span class="text-xs bg-sage-100 text-sage-800 px-3 py-1 rounded-full font-light">第四階段</span>
+                        <h4 class="text-xl font-medium mt-2 text-sage-900">美學與設計偏好 🎨</h4>
+                        <p class="text-xs text-sage-500 mt-1">讓我們聽聽你對日常佩戴飾品的美感喜好。</p>
+                    </div>
+
+                    <!-- Q11 -->
+                    <div class="space-y-3">
+                        <label class="block text-sm md:text-base font-medium text-sage-900">Q11. 憑你的第一直覺，你最喜歡、或最受哪一組水晶色系吸引？（可複選）</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <label class="flex flex-col items-center justify-center p-4 rounded-2xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50 space-y-2">
+                                <input type="checkbox" name="q11" value="紅色/橘色" class="h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="w-8 h-8 rounded-full bg-red-400 border border-black/10"></span>
+                                <span class="text-xs text-sage-800 font-medium">紅色 / 橘色系</span>
+                            </label>
+                            <label class="flex flex-col items-center justify-center p-4 rounded-2xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50 space-y-2">
+                                <input type="checkbox" name="q11" value="黃色/綠色/粉色" class="h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="w-8 h-8 rounded-full bg-yellow-100 border border-black/10 flex overflow-hidden">
+                                    <span class="w-1/3 h-full bg-yellow-200"></span>
+                                    <span class="w-1/3 h-full bg-green-200"></span>
+                                    <span class="w-1/3 h-full bg-pink-200"></span>
+                                </span>
+                                <span class="text-xs text-sage-800 font-medium text-center">黃/綠/粉色系</span>
+                            </label>
+                            <label class="flex flex-col items-center justify-center p-4 rounded-2xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50 space-y-2">
+                                <input type="checkbox" name="q11" value="藍色/紫色/白色" class="h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="w-8 h-8 rounded-full bg-blue-100 border border-black/10 flex overflow-hidden">
+                                    <span class="w-1/3 h-full bg-blue-300"></span>
+                                    <span class="w-1/3 h-full bg-purple-300"></span>
+                                    <span class="w-1/3 h-full bg-white"></span>
+                                </span>
+                                <span class="text-xs text-sage-800 font-medium text-center">藍/紫/白色系</span>
+                            </label>
+                            <label class="flex flex-col items-center justify-center p-4 rounded-2xl border border-sage-100 hover:border-sage-200 cursor-pointer transition-all bg-oatmeal-50/50 space-y-2">
+                                <input type="checkbox" name="q11" value="黑色/灰色" class="h-4 w-4 rounded border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="w-8 h-8 rounded-full bg-gray-600 border border-black/10"></span>
+                                <span class="text-xs text-sage-800 font-medium">黑色 / 灰色系</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q12 -->
+                    <div class="space-y-3">
+                        <label class="block text-sm md:text-base font-medium text-sage-900">Q12. 在飾品或水晶手鍊的款式設計上，你偏好哪種風格？</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q12" value="簡約風格" required class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">簡約優雅（低調耐看、日常百搭）</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q12" value="華麗存在感" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">奢華存在感（珠子較大、金屬配件多、獨特搶眼）</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q12" value="精緻細節" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">精緻設計（細節感強、秀氣多層次、細金屬包邊）</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q12" value="獨特設計" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">獨特設計感（不對稱設計、充滿藝術感與個性）</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q13 -->
+                    <div class="space-y-3">
+                        <label class="block text-sm md:text-base font-medium text-sage-900">Q13. 目前，你對天然水晶的認識與了解程度是？</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q13" value="新手" required class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">完全是個新手（覺得漂亮，但不太懂能量功效）</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q13" value="有興趣但不懂" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">很有興趣但還在研究中</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q13" value="有接觸過" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">有過一些接觸，也買過一些原礦或碎石</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q13" value="日常配戴者" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">已經有配戴水晶的習慣，很相信水晶能調整運勢</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q14 -->
+                    <div class="space-y-3">
+                        <label class="block text-sm md:text-base font-medium text-sage-900">Q14. 你過去是否曾接觸過「身心靈或能量分析」相關服務？</label>
+                        <p class="text-xs text-sage-500 italic">（如：生命靈數、通靈諮詢、塔羅占卜、五行八字、脈輪療癒等）</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q14" value="無接觸" required class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">完全沒有接觸過，我是新手但對此感到好奇 🔮</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q14" value="算過占卜命理" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">算過命理或占卜，體驗過心靈能量指引的幫助</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q14" value="聽過脈輪" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">聽過人體脈輪，想探索最適合我氣場的水晶</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q14" value="常規接觸者" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">有規律接觸，平常就有做靜坐冥想、身心靈學習。</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q15 -->
+                    <div class="space-y-3">
+                        <label class="block text-sm md:text-base font-medium text-sage-900">Q15. 如果有緣由沐曦島主依據你的靈魂狀態與靈數為你量身客製一條守護水晶，你覺得比較能接受的預算範圍？</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q15" value="1000內" required class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">NT$ 1,000 元以內 （體驗高質感入門守護 ✨）</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q15" value="1000-3000" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">NT$ 1,000～3,000 元 （買手鍊直接送單題諮詢，CP 值爆高主力首選）</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q15" value="3000-6000" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">NT$ 3,000～6,000 元 （高階能量水晶孤品 ＋ 一對一全盤深度諮詢 👑）</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-sage-100 hover:border-sage-200 cursor-pointer bg-oatmeal-50/50">
+                                <input type="radio" name="q15" value="6000以上" class="h-4 w-4 border-sage-300 text-sage-800 focus:ring-sage-500">
+                                <span class="ml-3 text-sm text-sage-800">NT$ 6,000 元以上</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: 情緒寄託室 -->
+                <div id="step-5" class="quiz-step hidden space-y-6">
+                    <div class="border-b border-sage-100 pb-4">
+                        <span class="text-xs bg-sage-100 text-sage-800 px-3 py-1 rounded-full font-light">第五階段</span>
+                        <h4 class="text-xl font-medium mt-2 text-sage-900">情緒寄託室 🌙</h4>
+                        <p class="text-xs text-sage-500 mt-1">在這裡，留下一句話給現在的自己，或最想對沐曦島主說的話。</p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <label class="block text-sm md:text-base font-medium text-sage-900">【寫下此時此刻的悄悄話】</label>
+                        <p class="text-xs text-sage-500">你的煩惱、心碎、或是期待...都可以像投入情緒寄託箱那樣，安心寫在下方。這封信只有你和島主沐曦會看見：</p>
+                        <textarea id="q-note" name="q_note" rows="5" class="w-full rounded-2xl border-sage-200 focus:border-sage-500 focus:ring-sage-500 text-sm p-4 bg-oatmeal-50/30" placeholder="深夜睡不著覺的時候，我總是感到... / 沐曦島主，我想請你幫我..."></textarea>
+                    </div>
+
+                    <div class="bg-sage-50 rounded-2xl p-4 border border-sage-100 flex items-start space-x-3 text-xs md:text-sm text-sage-800">
+                        <span class="text-base mt-0.5">🐢</span>
+                        <p>慢慢提醒你：恭喜你已經完成了所有調頻提問。按下方的**「送出情緒、開始調頻」**，神獸慢活導師將當場解開你靈魂內耗的密碼。</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="mt-10 flex justify-between items-center pt-4 border-t border-sage-100">
+                    <button type="button" id="prev-btn" onclick="prevStep()" class="hidden px-6 py-2.5 bg-oatmeal-100 hover:bg-oatmeal-200 text-sage-900 rounded-full font-medium text-sm transition-all duration-300">
+                        ← 返回上一步
+                    </button>
+                    <div class="flex-grow"></div>
+                    <button type="button" id="next-btn" onclick="nextStep()" class="px-8 py-3 bg-sage-900 hover:bg-sage-800 text-oatmeal-50 rounded-full font-medium tracking-wider text-sm transition-all duration-300 transform hover:-translate-y-0.5">
+                        下一步，繼續調頻 →
+                    </button>
+                    <button type="button" id="submit-btn" onclick="submitQuiz()" class="hidden px-8 py-3 bg-sage-900 hover:bg-sage-800 text-oatmeal-50 rounded-full font-medium tracking-widest text-sm transition-all duration-300 transform hover:-translate-y-0.5 shadow-md">
+                        送出情緒，開始調頻 🔮
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Result Section -->
+        <section id="section-result" class="hidden space-y-8">
+            
+            <!-- Result Card -->
+            <div class="bg-oatmeal-50 border border-sage-200/50 rounded-3xl p-6 md:p-10 shadow-md relative overflow-hidden">
+                <div class="absolute -top-12 -left-12 w-48 h-48 rounded-full bg-sage-100/50 pointer-events-none"></div>
+                <div class="relative z-10">
+                    
+                    <!-- Result Header -->
+                    <div class="text-center pb-6 border-b border-sage-200/50">
+                        <p class="text-xs text-sage-500 uppercase tracking-widest mb-1">島宇手作 ✕ 線上情緒分析結果</p>
+                        <h3 class="text-2xl font-bold tracking-widest text-sage-900 mt-2">靈魂內耗調頻診斷書</h3>
+                    </div>
+
+                    <!-- Weariness Index Meter -->
+                    <div class="py-8 text-center flex flex-col items-center">
+                        <p class="text-sm text-sage-500 font-light tracking-wider mb-2">當前靈魂內耗指數</p>
+                        <div class="relative flex items-center justify-center w-40 h-40 rounded-full bg-white shadow-inner border border-sage-100">
+                            <!-- Circular Progress Border (Simulated via SVG) -->
+                            <svg class="absolute inset-0 w-full h-full transform -rotate-90">
+                                <circle cx="80" cy="80" r="70" class="stroke-sage-100" stroke-width="8" fill="transparent"/>
+                                <circle cx="80" cy="80" r="70" id="result-svg-circle" stroke-dasharray="440" stroke-dashoffset="440" class="stroke-sage-500 transition-all duration-1000" stroke-width="10" stroke-linecap="round" fill="transparent"/>
+                            </svg>
+                            <span id="result-score" class="text-4xl font-extrabold text-sage-900 z-10">0%</span>
+                        </div>
+                        <h4 id="result-state-title" class="text-xl font-bold tracking-widest text-sage-800 mt-6 mb-2">
+                            狀態：計算中...
+                        </h4>
+                    </div>
+
+                    <!-- Dynamic Turtle Elder Block -->
+                    <div id="elder-block" class="bg-white/95 rounded-2xl p-6 border border-sage-200/50 space-y-4 mb-8">
+                        <div class="flex items-center space-x-3 border-b border-sage-100 pb-3">
+                            <span id="elder-avatar" class="text-3xl">🐢</span>
+                            <div>
+                                <h5 id="elder-name" class="font-bold text-sage-900">安心長老 阿寶</h5>
+                                <p id="elder-title" class="text-xs text-sage-500 font-light tracking-wide">島宇首席慢活守護神</p>
+                            </div>
+                        </div>
+                        <p id="elder-quote" class="text-sage-900 text-sm md:text-base leading-relaxed italic">
+                            「沒關係，天塌下來有我幫你扛著。放心在這裡脫下防備，放慢步調吧。」
+                        </p>
+                        <div id="elder-analysis" class="text-sage-800 text-sm leading-relaxed space-y-2 pt-2 border-t border-sage-50/80">
+                            <!-- Custom state narrative -->
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Recommended Bracelet -->
+                    <div class="bg-sage-100/40 rounded-2xl p-6 border border-sage-100 space-y-4">
+                        <div class="flex items-center space-x-3 border-b border-sage-100 pb-3">
+                            <span class="text-2xl">📿</span>
+                            <h5 class="font-bold text-sage-900">推薦與你共振的慢活水晶</h5>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
+                            <div class="md:col-span-3 space-y-2">
+                                <h6 id="crystal-title" class="font-bold text-sage-800 text-base">【阿寶的綠意慢活】能量守護手鍊</h6>
+                                <p id="crystal-desc" class="text-xs text-sage-500 leading-normal">
+                                    主打心輪與頂輪修復。綠幽靈與葡萄石能穩固磁場、舒緩內心緊繃，白水晶則負責過濾、消散日常生活累積的負能量。
+                                </p>
+                                <div class="flex flex-wrap gap-1.5 pt-1" id="crystal-tags">
+                                    <span class="text-[10px] bg-sage-200 text-sage-900 px-2 py-0.5 rounded-md font-light">綠幽靈</span>
+                                    <span class="text-[10px] bg-sage-200 text-sage-900 px-2 py-0.5 rounded-md font-light">葡萄石</span>
+                                    <span class="text-[10px] bg-sage-200 text-sage-900 px-2 py-0.5 rounded-md font-light">白水晶</span>
+                                </div>
+                            </div>
+                            <div class="md:col-span-2 bg-white rounded-xl p-3 border border-sage-200/30 flex flex-col items-center justify-center text-center space-y-1">
+                                <span class="text-xs text-sage-500 font-light">預估套餐價</span>
+                                <span id="crystal-price" class="text-xl font-bold text-sage-900">NT$ 880</span>
+                                <span class="text-[10px] text-sage-400 italic">過爐淨化 ＋ 慢活卡片</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Copy for LINE Section (Conversion Box) -->
+            <div class="bg-white border border-sage-200/50 rounded-3xl p-6 md:p-10 shadow-md space-y-6">
+                <div class="text-center max-w-md mx-auto">
+                    <span class="text-3xl">🎫</span>
+                    <h4 class="text-xl font-bold text-sage-900 tracking-wider mt-2">私訊沐曦島主，免費領取引路原礦！</h4>
+                    <p class="text-xs md:text-sm text-sage-500 font-light leading-relaxed mt-2">
+                        現在輸入你的出生年月日，一鍵複製下方格式化代碼，私訊島宇 LINE OA 客服！<br>
+                        <span class="text-sage-800 font-medium">只要 300 元升級「沐曦一對一調頻解析」，即可免費獲得一顆為你精選的「守護水晶原礦」！✨</span>
+                    </p>
+                </div>
+
+                <!-- Input User Data -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-md mx-auto">
+                    <div>
+                        <label class="block text-xs text-sage-500 font-medium mb-1">西元出生年月日 (例: 1998/10/24)</label>
+                        <input type="text" id="user-birthday" class="w-full rounded-xl border-sage-200 text-sm focus:ring-sage-500 focus:border-sage-500" placeholder="年/月/日">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-sage-500 font-medium mb-1">你所使用的 LINE 暱稱</label>
+                        <input type="text" id="user-linename" class="w-full rounded-xl border-sage-200 text-sm focus:ring-sage-500 focus:border-sage-500" placeholder="方便沐曦對齊問卷">
+                    </div>
+                </div>
+
+                <!-- Generated Text Area -->
+                <div class="max-w-md mx-auto space-y-2">
+                    <label class="block text-xs text-sage-500 font-medium">要複製發送給島主的訊息內容：</label>
+                    <textarea id="copy-text-area" readonly class="w-full rounded-xl border-sage-100 text-xs p-4 bg-oatmeal-50/50 text-sage-800 cursor-not-allowed font-mono h-32 leading-relaxed focus:ring-0 focus:border-sage-100"></textarea>
+                    <div class="pt-2 text-center">
+                        <button onclick="copyToClipboard()" class="w-full px-8 py-3 bg-sage-900 hover:bg-sage-800 text-oatmeal-50 rounded-full font-medium tracking-widest text-sm transition-all duration-300 transform hover:-translate-y-0.5 shadow-md flex items-center justify-center space-x-2">
+                            <span>📋 一鍵複製診斷代碼</span>
+                        </button>
+                        <p class="text-[10px] text-sage-400 mt-2">複製後請返回 LINE 視窗，直接貼上並送出訊息唷！🐢</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom CTA -->
+            <div class="text-center pt-4">
+                <button onclick="resetQuiz()" class="text-sm text-sage-500 hover:text-sage-800 font-light underline transition-all">
+                    ← 重新填寫問卷
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-sage-100 py-6 text-center text-xs text-sage-400 font-light bg-oatmeal-50">
+        <div class="max-w-4xl mx-auto px-4 space-y-1">
+            <p>© 2026 島宇手作 Island Space. All Rights Reserved.</p>
+            <p>卸下世界的喧囂，在島宇，重拾你靈魂的主權。🐢✨🔮</p>
+        </div>
+    </footer>
+
+    <!-- Core App Logic -->
+    <script>
+        const STEPS_COUNT = 5;
+        let currentStep = 1;
+        let innerScore = 0; // 內耗分數
+
+        // Update Q1 Slider Value display
+        const q1Input = document.getElementById('q1');
+        const q1ValText = document.getElementById('q1-val');
+        q1Input.addEventListener('input', (e) => {
+            q1ValText.innerText = `當前：${e.target.value} 分`;
+        });
+
+        // Safe auto-tick none option logic
+        const q2None = document.getElementById('q2-none');
+        const q2Checkboxes = document.querySelectorAll('input[name="q2"]');
+        q2Checkboxes.forEach(cb => {
+            cb.addEventListener('change', (e) => {
+                if (cb === q2None && cb.checked) {
+                    q2Checkboxes.forEach(other => {
+                        if (other !== q2None) other.checked = false;
+                    });
+                } else if (cb !== q2None && cb.checked) {
+                    q2None.checked = false;
+                }
+            });
+        });
+
+        function showToast(text, icon = '✨') {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-text').innerText = text;
+            document.getElementById('toast-icon').innerText = icon;
+            
+            toast.style.transform = 'translateY(0px) translateX(-50%)';
+            toast.style.opacity = '1';
+            
+            setTimeout(() => {
+                toast.style.transform = 'translateY(-80px) translateX(-50%)';
+                toast.style.opacity = '0';
+            }, 2500);
+        }
+
+        function startQuestionnaire() {
+            document.getElementById('section-welcome').classList.add('hidden');
+            document.getElementById('section-quiz').classList.remove('hidden');
+            updateStepDisplay();
+        }
+
+        function updateStepDisplay() {
+            // Update progress bar
+            const percent = Math.round((currentStep / STEPS_COUNT) * 100);
+            document.getElementById('quiz-progress-bar').style.width = `${percent}%`;
+            document.getElementById('quiz-progress-text').innerText = `調頻進度：${currentStep} / ${STEPS_COUNT}`;
+            document.getElementById('quiz-percentage-text').innerText = `${percent}%`;
+
+            // Display active step card
+            const stepDivs = document.querySelectorAll('.quiz-step');
+            stepDivs.forEach((div, index) => {
+                if (index + 1 === currentStep) {
+                    div.classList.remove('hidden');
+                } else {
+                    div.classList.add('hidden');
+                }
+            });
+
+            // Adjust navigation buttons
+            if (currentStep === 1) {
+                document.getElementById('prev-btn').classList.add('hidden');
+            } else {
+                document.getElementById('prev-btn').classList.remove('hidden');
+            }
+
+            if (currentStep === STEPS_COUNT) {
+                document.getElementById('next-btn').classList.add('hidden');
+                document.getElementById('submit-btn').classList.remove('hidden');
+            } else {
+                document.getElementById('next-btn').classList.remove('hidden');
+                document.getElementById('submit-btn').classList.add('hidden');
+            }
+
+            // Scroll window to top of quiz card smoothly on step change
+            document.getElementById('section-quiz').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function nextStep() {
+            // Step validation
+            if (!validateStep(currentStep)) {
+                showToast("請先完成本頁面的基本評估唷 🌿", "💡");
+                return;
+            }
+            if (currentStep < STEPS_COUNT) {
+                currentStep++;
+                updateStepDisplay();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStepDisplay();
+            }
+        }
+
+        function validateStep(step) {
+            const form = document.getElementById('quiz-form');
+            if (step === 1) {
+                // Ensure Q4 radio selected
+                const q4Checked = form.querySelector('input[name="q4"]:checked');
+                return !!q4Checked;
+            }
+            if (step === 2) {
+                // Ensure Q5, Q6, Q7 radios selected
+                const q5Checked = form.querySelector('input[name="q5"]:checked');
+                const q6Checked = form.querySelector('input[name="q6"]:checked');
+                const q7Checked = form.querySelector('input[name="q7"]:checked');
+                return q5Checked && q6Checked && q7Checked;
+            }
+            if (step === 3) {
+                // Ensure Q8, Q9 radios selected
+                const q8Checked = form.querySelector('input[name="q8"]:checked');
+                const q9Checked = form.querySelector('input[name="q9"]:checked');
+                return q8Checked && q9Checked;
+            }
+            if (step === 4) {
+                // Ensure Q12, Q13, Q14, Q15 radios selected
+                const q12Checked = form.querySelector('input[name="q12"]:checked');
+                const q13Checked = form.querySelector('input[name="q13"]:checked');
+                const q14Checked = form.querySelector('input[name="q14"]:checked');
+                const q15Checked = form.querySelector('input[name="q15"]:checked');
+                return q12Checked && q13Checked && q14Checked && q15Checked;
+            }
+            return true;
+        }
+
+        function calculateScore() {
+            const form = document.getElementById('quiz-form');
+            
+            // Q1 calculation: Lower score is higher weariness
+            // 1 -> 40pts, 10 -> 0pts
+            const q1Val = parseInt(document.getElementById('q1').value);
+            const q1Score = (10 - q1Val) * 4.4; // max 39.6
+
+            // Q2 calculation: number of emotional struggles (checkboxes)
+            let q2Count = 0;
+            const q2s = form.querySelectorAll('input[name="q2"]:checked');
+            q2s.forEach(cb => {
+                if (cb.value !== "無困擾") q2Count++;
+            });
+            const q2Score = Math.min(q2Count * 6, 30); // max 30
+
+            // Q4 calculation: Impact level
+            // 1 -> 5pts, 2 -> 15pts, 3 -> 22pts, 4 -> 30pts
+            const q4Val = parseInt(form.querySelector('input[name="q4"]:checked').value);
+            let q4Score = 5;
+            if (q4Val === 2) q4Score = 15;
+            if (q4Val === 3) q4Score = 22;
+            if (q4Val === 4) q4Score = 30;
+
+            // Final score rounded up
+            let rawTotal = q1Score + q2Score + q4Score;
+            innerScore = Math.min(Math.max(Math.round(rawTotal), 5), 100);
+        }
+
+        function submitQuiz() {
+            calculateScore();
+            displayResults();
+            
+            document.getElementById('section-quiz').classList.add('hidden');
+            document.getElementById('section-result').classList.remove('hidden');
+            
+            // Scroll to result smoothly
+            document.getElementById('section-result').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function displayResults() {
+            // Animate Circle & Text Score
+            const circle = document.getElementById('result-svg-circle');
+            const scoreText = document.getElementById('result-score');
+            
+            // Dasharray perimeter is 440 (2 * pi * r(70) = 439.8)
+            const strokeOffset = 440 - (440 * innerScore) / 100;
+            
+            setTimeout(() => {
+                circle.style.strokeDashoffset = strokeOffset;
+            }, 100);
+            
+            // Animate text counter
+            let currentDisplay = 0;
+            const timer = setInterval(() => {
+                if (currentDisplay >= innerScore) {
+                    clearInterval(timer);
+                    scoreText.innerText = `${innerScore}%`;
+                } else {
+                    currentDisplay++;
+                    scoreText.innerText = `${currentDisplay}%`;
+                }
+            }, 10);
+
+            // Fetch dynamic state category & mapping
+            let stateTitle = "";
+            let elderName = "";
+            let elderQuote = "";
+            let elderAnalysis = "";
+            let elderAvatar = "🐢";
+            
+            // Crystals & Design Logic
+            let crystalTitle = "";
+            let crystalDesc = "";
+            let crystalPrice = "";
+            let crystalTags = [];
+
+            // Fetch state specific details
+            if (innerScore <= 20) {
+                // Category A: 🟢 狀態 A 【潮聲輕播・微風慢活島】 (Weariness <= 20%)
+                stateTitle = "狀態 A：【潮聲輕播・微風慢活島】";
+                elderName = "安心長老 阿寶 🐢 (斑龜)";
+                elderQuote = "「很好耶！你目前的呼吸與能量都在平穩的軌道上，就像我在和煦暖陽下慢慢爬行、曬曬太陽般，怡然自得。」";
+                elderAnalysis = `
+                    <p>🌟 <strong>目前心境剖析：</strong>你很懂得善待自己，在繁忙的工作與生活的夾縫中，依然保有屬於你的那片『留白空間』。目前的情緒與人際影響對你來說都在可控範圍，繼續維持這份生活的掌控感吧！</p>
+                    <p>🌿 <strong>慢慢小幫手提示：</strong>這個階段的你，磁場相對輕盈，最適合配戴一些<strong>溫和、穩固正財及維持純淨磁場</strong>的天然水晶。當作日常的溫柔點綴即可！</p>
+                `;
+                elderAvatar = "🐢";
+
+                // Base Green / White (A-Bao Style)
+                crystalTitle = "【阿寶的綠意慢活】能量守護手鍊";
+                crystalDesc = "專為需要穩固正財、維持純淨心輪設計。使用綠幽靈（10mm 主珠）、葡萄石與白水晶。能溫和守護你當前的平靜，隔絕日常微小負能量干擾。";
+                crystalPrice = "NT$ 880";
+                crystalTags = ["綠幽靈 (主財)", "葡萄石 (希望)", "白水晶 (淨化)"];
+            } else if (innerScore <= 60) {
+                // Category B: 🟡 狀態 B 【靜海微瀾・思緒超載島】 (21% - 60%)
+                stateTitle = "狀態 B：【靜海微瀾・思緒超載島】";
+                elderName = "光芒使者 波卡 🐢 (赫曼陸龜)";
+                elderQuote = "「最近是不是腦袋常常停不下來呢？甚至把很多委屈和想法都悶在心底。別擔心，看著我！雖然我走得很慢，但我踏出的每一步，都是在通往光的方向。只要不停下來，生命總能撥開烏雲。」";
+                elderAnalysis = `
+                    <p>⚠️ <strong>目前心境剖析：</strong>你最近的心中充滿了繁瑣的思緒。工作、人際關係或自我期待，讓你不知不覺進入了『慢性內耗』。你在白天可能強顏歡笑，但深夜卸下防備時，心靈超載的疲倦感便會排山倒海而來。</p>
+                    <p>☀️ <strong>慢慢小幫手提示：</strong>你現在的脈輪急需<strong>海底輪與太陽神經叢的激活</strong>！你需要注入像波卡導師一樣強大的自信光芒，隔絕職場的小人與雜音，大膽說出心聲！</p>
+                `;
+                elderAvatar = "🐢";
+
+                // Yellow / Black (Poca Style)
+                crystalTitle = "【波卡的破曉曙光】自信重建手鍊";
+                crystalDesc = "主力人氣推薦！套餐內含「單題生命靈數對齊」。使用金髮晶（10mm 主珠）、黃水晶、黑曜石與純銀配飾。幫助你重建自我自信，阻擋職場負能量與小人干擾，喚醒行動力！";
+                crystalPrice = "NT$ 1,580";
+                crystalTags = ["金髮晶 (行動財)", "黃水晶 (自信心)", "黑曜石 (擋小人)"];
+            } else {
+                // Category C: 🔴 狀態 C 【暴風雨夜：靈魂超載島】 (61% or higher)
+                stateTitle = "狀態 C：【暴風雨夜：靈魂超載島】";
+                elderName = "靈魂翻譯官 點點 🐢 (櫻桃紅腿陸龜)";
+                elderQuote = "「聽到了嗎？那是你內心深處在發出的微弱呼救。你已經強撐著走了太久太遠，現在，請徹底把防備放下。來到島宇，你不需要在任何人面前假裝堅強，讓我為你過濾世界的一切嘈雜。」";
+                elderAnalysis = `
+                    <p>🚨 <strong>目前心境剖析：</strong>你正處於極度緊繃、精神內耗的『暴風雨夜』。感情、工作、經濟或自我價值感可能都在嚴重拉扯你的磁場。你常常失眠、做夢，或感覺能量快要枯竭，卻又不知道該如何向周圍傾訴、釋放情緒。</p>
+                    <p>🌌 <strong>慢慢小幫手提示：</strong>你目前最需要的是<strong>全面脈輪的深層能量修復與覺察</strong>。這不是一條普通飾品手鍊能解決的，你非常需要沐曦老師親自為你進行生命藍圖/生命靈數與通靈的深度一對一解盤，配合極高頻超七水晶為你擋煞調頻！</p>
+                `;
+                elderAvatar = "🐢";
+
+                // Super Seven / Labradorite (Dian-Dian Style)
+                crystalTitle = "【點點的靈魂星宇】高階深層覺察手鍊";
+                crystalDesc = "尊榮頂級珍品。套餐直接內含「一對一深度生命靈數全盤解盤（30-40分鐘）」。使用極珍貴頂級超七（12mm 稀有主珠）、拉長石（藍綠神祕光暈）與藍磷灰。直擊你靈魂最深處的卡點。";
+                crystalPrice = "NT$ 3,280";
+                crystalTags = ["頂級超七 (全脈輪能量)", "拉長石 (舒緩焦慮)", "藍磷灰 (直覺智慧)"];
+            }
+
+            // Apply to DOM elements
+            document.getElementById('result-state-title').innerText = stateTitle;
+            document.getElementById('elder-name').innerText = elderName;
+            document.getElementById('elder-avatar').innerText = elderAvatar;
+            document.getElementById('elder-quote').innerText = elderQuote;
+            document.getElementById('elder-analysis').innerHTML = elderAnalysis;
+            
+            // Set dynamic colors based on result
+            const circleColor = document.getElementById('result-svg-circle');
+            circleColor.className = "transition-all duration-1000"; // Reset classes
+            if (innerScore <= 20) {
+                circleColor.classList.add('stroke-sage-500');
+            } else if (innerScore <= 60) {
+                circleColor.classList.add('stroke-yellow-400');
+            } else {
+                circleColor.classList.add('stroke-red-400');
+            }
+
+            document.getElementById('crystal-title').innerText = crystalTitle;
+            document.getElementById('crystal-desc').innerText = crystalDesc;
+            document.getElementById('crystal-price').innerText = crystalPrice;
+            
+            const tagsDiv = document.getElementById('crystal-tags');
+            tagsDiv.innerHTML = "";
+            crystalTags.forEach(tag => {
+                const span = document.createElement('span');
+                span.className = "text-[10px] bg-sage-200 text-sage-900 px-2.5 py-0.5 rounded-md font-medium tracking-wider";
+                span.innerText = tag;
+                tagsDiv.appendChild(span);
+            });
+
+            // Populate the generated output box
+            updateCopyText();
+        }
+
+        // Live refresh text for Clipboard
+        const birthdayInput = document.getElementById('user-birthday');
+        const lineNameInput = document.getElementById('user-linename');
+
+        birthdayInput.addEventListener('input', updateCopyText);
+        lineNameInput.addEventListener('input', updateCopyText);
+
+        function updateCopyText() {
+            const bday = birthdayInput.value || "【請輸入出生年月日】";
+            const lineName = lineNameInput.value || "【請輸入暱稱】";
+            const form = document.getElementById('quiz-form');
+            
+            // Extract selected Q10 values
+            const selectedDesires = [];
+            const desires = form.querySelectorAll('input[name="q10"]:checked');
+            desires.forEach(cb => selectedDesires.push(cb.value));
+
+            // Extract color preference
+            const selectedColors = [];
+            const colors = form.querySelectorAll('input[name="q11"]:checked');
+            colors.forEach(cb => selectedColors.push(cb.value));
+
+            // Style preference
+            const stylePref = form.querySelector('input[name="q12"]:checked')?.value || "無特別偏好";
+
+            // Extract Note
+            const noteText = document.getElementById('q-note').value || "暫無寫下悄悄話";
+
+            let stateChar = "A";
+            if (innerScore > 20 && innerScore <= 60) stateChar = "B";
+            if (innerScore > 60) stateChar = "C";
+
+            const copyMessage = `【島宇手作 🐢 靈魂內耗問卷調頻代碼】
+---------------------------------------
+島民名稱：${lineName}
+出生年月日：${bday}
+內耗指數分數：${innerScore}% (狀態 ${stateChar})
+希望改善的方向：${selectedDesires.join('、') || "暫無勾選"}
+喜愛的水晶色系：${selectedColors.join('、') || "無特別感覺"}
+手鍊風格偏好：${stylePref}
+情緒寄託悄悄話：${noteText}
+---------------------------------------
+💡 沐曦島主，我已完成線上問卷，想要升級「$300 專屬調頻解析」並兌換「引路原礦一顆」！`;
+
+            document.getElementById('copy-text-area').value = copyMessage;
+        }
+
+        function copyToClipboard() {
+            const bday = birthdayInput.value.trim();
+            if (!bday) {
+                showToast("請先在下方輸入你的出生年月日唷！", "💡");
+                birthdayInput.focus();
+                return;
+            }
+
+            const copyText = document.getElementById("copy-text-area");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // For mobile devices
+
+            try {
+                // Using exact execCommand fallback as recommended
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showToast("複製成功！請立刻返回 LINE 貼上並送出訊息唷 🐢", "💚");
+                } else {
+                    showToast("複製失敗，請手動長按選取文字複製唷！", "⚠️");
+                }
+            } catch (err) {
+                showToast("瀏覽器不支援複製，請手動長按選取複製！", "⚠️");
+            }
+        }
+
+        function resetQuiz() {
+            currentStep = 1;
+            document.getElementById('quiz-form').reset();
+            document.getElementById('q1-val').innerText = "當前：5 分";
+            document.getElementById('section-result').classList.add('hidden');
+            document.getElementById('section-welcome').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
